@@ -17,6 +17,8 @@ ActiveRecord::Schema.define(version: 20160326101904) do
     t.string   "name"
     t.date     "date"
     t.text     "summary"
+    t.text     "url"
+    t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
