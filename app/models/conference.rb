@@ -1,5 +1,5 @@
 class Conference < ActiveRecord::Base
-  belongs_to :users
+  belongs_to :user
 
   validates :name, presence: true, length: { minimum: 1, maximum: 100 }
   validates :date, presence: true
