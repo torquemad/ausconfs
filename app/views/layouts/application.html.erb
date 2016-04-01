@@ -9,7 +9,12 @@
 <body>
 
 	<%= render "layouts/navigation" %>
-	<%= yield %>
+
+  <div class="container">
+    <%= render "layouts/notifications" %>
+	  <%= yield %>
+  </div>
+
 	<%= render "layouts/footer" %>
 
 </body>

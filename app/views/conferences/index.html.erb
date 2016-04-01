@@ -1,0 +1,30 @@
+<h1> Conferences </h1>
+
+<table class="table table-bordered"> 
+	  <thead>
+	    <tr>
+	      <th></th>
+	      <th>Name</th>
+				<th>Created</th>
+				<th>Updated</th>
+	      <th>Date</th>
+	      <th>Summary</th>
+	      <th>Website</th>
+	    </tr>
+	  </thead>
+  <% @conferences.each do |c| %>
+
+	  <tbody>
+	    <tr>
+        <th scope="row"><%= c.id %></th>
+	      <td><%= link_to c.name, conference_path(c) %></td>
+				<td><%= time_ago_in_words(c.created_at) %></td>
+				<td><%= time_ago_in_words(c.updated_at) %></td>
+	      <td><%= c.date %></td>
+	      <td><%= c.summary %></td>
+	      <td><%= link_to c.url, c.url, target: '_blank' %></td>
+	    </tr>
+	  </tbody>
+
+  <% end %>
+</table>
