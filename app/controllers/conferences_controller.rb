@@ -14,7 +14,7 @@ class ConferencesController < ApplicationController
 
   def create
     @conference = Conference.new(conference_params)
-    @conference.user = User.find(1) #until auth implemented
+    @conference.user = User.find(2) #until auth implemented
 
     if @conference.save
       flash[:success] = "Your conference has successfully been created."
