@@ -10,4 +10,7 @@
 
 <h4>Website</h4>
 <%= link_to @conference.url, @conference.url, target: '_blank '%>
+
+<%= image_tag(@conference.picture.url, size: "300x150") if @conference.picture?%>
+
 <h3><%= link_to 'Return', conferences_path, class: "btn btn-primary btn-small" %></h3>

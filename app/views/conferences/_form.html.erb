@@ -1,7 +1,7 @@
 <%= render 'shared/errors', object: @conference  %>
 
 <div class="row">
-  <%= form_for @conference do |c| %>
+  <%= form_for(@conference, { multipart: true }) do |c| %>
     <%= c.label :name %>
     <%= c.text_field :name %>
 
@@ -16,6 +16,7 @@
 
     <%= c.label :url %>
     <%= c.url_field :url %>
+    <%= c.file_field :picture, accept: 'image/jpg, image/gif, image/png' %>
 
     <%= c.submit(@conference.new_record? ? 'Create' : 'Edit', class: "btn btn-success btn-small") %>
   <% end %>
