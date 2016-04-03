@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160330072131) do
+ActiveRecord::Schema.define(version: 20160403081245) do
 
   create_table "conferences", force: :cascade do |t|
     t.string   "name"
@@ -22,15 +22,15 @@ ActiveRecord::Schema.define(version: 20160330072131) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.string   "picture"
   end
 
   create_table "users", force: :cascade do |t|
     t.string   "username"
     t.string   "email"
-    t.string   "password"
-    t.string   "salt"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "password_digest"
   end
 
 end
