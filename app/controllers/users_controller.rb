@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :set_user, only: [:edit, :update]
+  before_action :require_identical_user, only: [:edit, :update]
 
   def new
     @user = User.new
@@ -8,6 +10,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       flash[:success] = "Account created"
+      session[:user_id] = @user.id
       redirect_to conferences_path
     else
       render 'new'
@@ -15,14 +18,12 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
   end
 
   def update
-    @user = User.find(params[:id])
     if @user.update(user_params)
       flash[:success] = "Account updated"
-      redirect_to conferences_path #change to show#user
+      redirect_to edit_user_path
     else
       render 'edit'
     end
@@ -34,4 +35,14 @@ class UsersController < ApplicationController
     params.require(:user).permit(:username, :email, :password)
   end
 
+  def require_identical_user
+    if current_user != @user
+      flash[:danger] = "You cannot edit that."
+      redirect_to root_path
+    end
+  end
+
+  def set_user
+    @user = User.find(params[:id])
+  end
 end
