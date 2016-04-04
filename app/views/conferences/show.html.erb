@@ -1,6 +1,8 @@
 <h1><%= @conference.name %> </h1>
 
-<%= link_to 'Edit', edit_conference_path(@conference), class: 'btn btn-success' %>
+<% if logged_in? and @conference.user == current_user then %>
+  <%= link_to 'Edit', edit_conference_path(@conference), class: 'btn btn-success' %>
+<% end %>
 
 <h4>Description</h4>
 <%= simple_format(@conference.description) %>
